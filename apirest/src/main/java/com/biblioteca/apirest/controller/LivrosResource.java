@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.biblioteca.apirest.models.Livros;
 import com.biblioteca.apirest.repository.LivrosRepository;
+
 
 @RestController
 @RequestMapping(value="/livros")
@@ -24,27 +24,27 @@ public class LivrosResource {
 	@Autowired
 	private LivrosRepository livrosrepository;
 	
-	@GetMapping("/listartodos")
+	@GetMapping
 	public List<Livros> listartodos(){
 		return livrosrepository.findAll();
 	}
 	
-	@GetMapping("/listar/{id}")
+	@GetMapping("{id}")
 	public Livros listar(@PathVariable(value="id")long id) {
 		return livrosrepository.findById(id);
 	}
 	
-	@PostMapping("/cadastrar")
-	public Livros salvarLivro (@RequestBody Livros livro) {
+	@PostMapping
+	public Livros salvarLivro (@RequestBody @Valid Livros livro) {
 		return livrosrepository.save(livro);
 	}
 	
-	@DeleteMapping("/deletar")
+	@DeleteMapping
 	public void deletaProduto(@RequestBody @Valid Livros livro) {
 		livrosrepository.delete(livro);
 	}
 	
-	@PutMapping("/atualizar")
+	@PutMapping
 	public Livros atualizaProduto(@RequestBody @Valid Livros livro) {
 		return livrosrepository.save(livro);
 	}

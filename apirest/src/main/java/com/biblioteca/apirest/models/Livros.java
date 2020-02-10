@@ -1,6 +1,7 @@
 package com.biblioteca.apirest.models;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "TB_Livros")
@@ -28,10 +30,10 @@ public class Livros implements Serializable {
 	    private Float valor;
 
 	    @NotNull
-	    private int reserva;
+	    private int status;
 
 	    @NotNull
-	    private int aluguel;
+	    private Date data;
 
 
 	    private long id_cliente;
@@ -60,21 +62,21 @@ public class Livros implements Serializable {
 	        this.valor = valor;
 	    }
 
-	    public int getReserva() {
-	        return reserva;
+	    public int getStatus() {
+	        return status;
 	    }
 
-	    public void setReserva(int reserva) {
-	        this.reserva = reserva;
+	    public void setStatus(int status) {
+	        this.status = status;
 	    }
 
-	    public int getAluguel() {
-	        return aluguel;
-	    }
+	    public Date getData() {
+			return data;
+		}
 
-	    public void setAluguel(int aluguel) {
-	        this.aluguel = aluguel;
-	    }
+		public void setData(Date data) {
+			this.data = data;
+		}
 
 	    public long getId_cliente() {
 	        return id_cliente;

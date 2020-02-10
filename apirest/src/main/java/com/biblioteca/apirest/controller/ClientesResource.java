@@ -20,27 +20,27 @@ public class ClientesResource {
 	@Autowired
 	private ClientesRepository clientesrepository;
 	
-	@GetMapping("/listartodos")
+	@GetMapping
 	public List<Clientes> listartodos(){
 		return clientesrepository.findAll();
 	}
 	
-	@GetMapping("/listar/{id}")
+	@GetMapping("{id}")
 	public Clientes listar(@PathVariable(value="id")long id) {
 		return clientesrepository.findById(id);
 	}
 	
-	@PostMapping("/cadastrar")
+	@PostMapping
 	public Clientes salvarLivro (@RequestBody Clientes cliente) {
 		return clientesrepository.save(cliente);
 	}
 	
-	@DeleteMapping("/deletar")
+	@DeleteMapping
 	public void deletarLivro (@RequestBody Clientes cliente) {
 		clientesrepository.delete(cliente);
 	}
 	
-	@PutMapping("/atualizar")
+	@PutMapping
 	public Clientes atualizaLivros (@RequestBody Clientes cliente) {
 		return clientesrepository.save(cliente);
 	}
